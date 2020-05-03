@@ -22,7 +22,7 @@
 
 .hero2 {
 	height: 100vh;
-	padding-top: 35vh;
+	padding-top: 25vh;
 	z-index: 1;
 	display: block;
 	position: relative;
@@ -30,7 +30,7 @@
 
 .hero2::after {
 	content: "";
-	background: url(./images/stonks.jpg);
+	background: url(./images/nasdaq.jpg);
 	background-size: cover;
 	opacity: 0.6;
 	top: 0;
@@ -43,7 +43,7 @@
 
 .hero3 {
 	height: 100vh;
-	padding-top: 35vh;
+	padding-top: 25vh;
 	z-index: 1;
 	display: block;
 	position: relative;
@@ -51,7 +51,7 @@
 
 .hero3::after {
 	content: "";
-	background: url(./images/stonks.jpg);
+	background: url(./images/bull.jpg);
 	background-size: cover;
 	opacity: 0.6;
 	top: 0;
