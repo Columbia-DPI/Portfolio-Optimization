@@ -1,5 +1,9 @@
+$("span, .overlay").click(function () {
+    $('body').css({'overflow':'visible'});
+    $(".show").fadeOut();
+});
+
 function clickCalculate(elmnt) {
-    console.log("Calculating...")
     var datum = {
         "weights": [{
             "w1": ".1"
@@ -26,7 +30,6 @@ function clickCalculate(elmnt) {
             $("input[name='t3']").val()
         ]
     };
-    console.log(JSON.stringify(datum))
     $.ajax({
         type: 'POST',
         url: '/plot',
@@ -36,10 +39,29 @@ function clickCalculate(elmnt) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data) {
-            $("img").attr("src", "data:image/png;base64," + data['b64encoded']);
+            var $src = $(this).attr("src");
+            $(".show").fadeIn();
+            $('body').css({'overflow':'hidden'});
+            $(".img-show img").attr("src", "data:image/png;base64," + data['b64encoded']);
         },
         failure: function(errMsg) {
             alert(errMsg);
         }
+    });
+}
+
+function scrollToHowto() {
+    const y = document.getElementById("howdoes").getBoundingClientRect().top + window.scrollY;
+    window.scroll({
+      top: y,
+      behavior: 'smooth'
+    });
+}
+
+function scrollToSimulator() {
+    const y = document.getElementById("simulator").getBoundingClientRect().top + window.scrollY;
+    window.scroll({
+      top: y,
+      behavior: 'smooth'
     });
 }

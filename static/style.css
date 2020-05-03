@@ -1,0 +1,131 @@
+.hero {
+	height: 93.5vh;
+	padding-top: 35vh;
+	text-align: center;
+	z-index: 1;
+	display: block;
+	position: relative;
+}
+
+.hero::after {
+	content: "";
+	background: url(./images/background.jpg);
+	background-size: cover;
+	opacity: 0.6;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;   
+}
+
+.hero2 {
+	height: 100vh;
+	padding-top: 35vh;
+	z-index: 1;
+	display: block;
+	position: relative;
+}
+
+.hero2::after {
+	content: "";
+	background: url(./images/stonks.jpg);
+	background-size: cover;
+	opacity: 0.6;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;   
+}
+
+.hero3 {
+	height: 100vh;
+	padding-top: 35vh;
+	z-index: 1;
+	display: block;
+	position: relative;
+}
+
+.hero3::after {
+	content: "";
+	background: url(./images/stonks.jpg);
+	background-size: cover;
+	opacity: 0.6;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;   
+}
+
+.hero .heroContent {
+	color: #000000;
+}
+
+.hero2 .heroContent {
+	margin-left: 70vw;
+	color: #000000;
+}
+
+.hero3 .heroContent {
+	margin-left: 3vw;
+	color: #000000;
+}
+
+.heroContent p {
+	font-size: 1.3rem;
+}
+
+.heroContent button {
+	margin-top: 2vh;
+}
+
+#simulator {
+	height: 100vh;
+}
+
+.calcInput {
+	width: 10vw;
+}
+
+/* Popup stuff */
+.show{
+    z-index: 999;
+    display: none;
+}
+.show .overlay{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.66);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.show .img-show{
+    width: 600px;
+    height: 400px;
+    background: #FFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    overflow: hidden
+}
+.img-show span{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 99;
+    cursor: pointer;
+}
+.img-show img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
