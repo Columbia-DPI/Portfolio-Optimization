@@ -2,26 +2,8 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config(object):
-    DEBUG = False
-    TESTING = False
-    CSRF_ENABLED = True
-    SECRET_KEY = 'willchangelater'
-    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    FLASK_APP = os.environ.get('FLASK_APP')
+    FLASK_ENV = os.environ.get('FLASK_ENV')
+    FLASK_DEBUG = os.environ.get('FLASK_DEBUG')
 
-
-class ProductionConfig(Config):
-    DEBUG = False
-
-
-class StagingConfig(Config):
-    DEVELOPMENT = True
-    DEBUG = True
-
-
-class DevelopmentConfig(Config):
-    DEVELOPMENT = True
-    DEBUG = True
-
-
-class TestingConfig(Config):
-    TESTING = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = False

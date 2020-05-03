@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, jsonify, Response
 import os
-from flask_sqlalchemy import SQLAlchemy
 from io import BytesIO
 import base64
 import numpy as np
@@ -10,14 +9,10 @@ from pandas_datareader.nasdaq_trader import get_nasdaq_symbols
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
-from config import Config, DevelopmentConfig
+from config import Config
 
 app = Flask(__name__)
-app.config.from_object(DevelopmentConfig)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-
-from models import User
+app.config.from_object(Config)
 
 def portfolio(tickers,weights,backtest_window="2019-09-04",benchmark="SPY"):
     if weights.sum()!=1:
@@ -55,29 +50,6 @@ def portfolio(tickers,weights,backtest_window="2019-09-04",benchmark="SPY"):
 @app.route('/', methods=['GET'])
 def main():
     return render_template('index.html')
-    
-@app.route('/createuser', methods=['POST'])
-def createuser():
-    json_data = request.get_json()
-    username_ = json_data['Datum']['username']
-    password_ = json_data['Datum']['password']
-    if (User.query.filter_by(username = username_).count() > 0):
-        return jsonify({'response' : 'user already exists'})
-    user = User(username_, password_)
-    db.session.add(user)
-    db.session.commit()
-    return jsonify({'response' : 'user created: ' + username_})
-
-@app.route('/login', methods=['GET'])
-def login():
-    json_data = request.get_json()
-    username_ = json_data['Datum']['username']
-    password_ = json_data['Datum']['password']
-    user = User.query.filter_by(username = username_).first()
-    if (user.password == password_):
-        return "success!! logged in"
-    else:
-        return "failure. does the user exist and is the password correct?"
 
 @app.route('/plot', methods=['POST'])
 def plot():
@@ -87,7 +59,6 @@ def plot():
     tickers = np.asarray(json_data['Datum']['tickers'])
     daily_portfolio_return, mean_return, covariance_matrix, fig = portfolio(tickers, weights, backtest_window="2019-09-04",benchmark="SPY")
     return jsonify({'b64encoded' : fig.decode('ascii')})
-    return jsonify({'b64encoded' : weights[0]})
 
 if __name__ == '__main__':
     app.run()

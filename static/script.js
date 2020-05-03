@@ -80,7 +80,7 @@ document.addEventListener("click", closeAllSelect);
   document.getElementsByClassName("child price")[0].innerHTML = '$XYZ';
 }*/
 
-function clickCalculate(elmnt) {
+/*function clickCalculate(elmnt) {
   var datum = {"username": $("input[name='w1']").val(), 
                "password": $("input[name='t1']").val() };
             $.ajax({
@@ -98,27 +98,10 @@ function clickCalculate(elmnt) {
                     alert(errMsg);
             }
           });
-}
+}*/
 
-/*function clickCalculate(elmnt) {
-  document.getElementsByClassName("calculate")[0].innerHTML = "clicked";
-  /* $.post('/plot', {
-                weights: [document.getElementsByName("w1")[0].innerText, 
-                          document.getElementsByName("w2")[0].innerText,
-                          document.getElementsByName("w3")[0].innerText
-                         ],
-                tickers: [document.getElementsByName("t1")[0].innerText,
-                            document.getElementsByName("t2")[0].innerText,
-                            document.getElementsByName("t3")[0].innerText
-                         ]
-            }).done(function(response) {
-              //$("img").attr("src", "data:image/png;base64," + response['b64encoded']);
-              document.getElementsByClassName("calculate")[0].innerHTML = response['b64encoded'];
-
-            }).fail(function() {
-                document.getElementsByClassName("calculate")[0].innerHTML = "failed";
-            }); */
-  /*var datum = {"weights": [{"w1": ".1"}, {"w2": ".1"}, {"w3": ".8"}], 
+function clickCalculate(elmnt) {
+  var datum = {"weights": [{"w1": ".1"}, {"w2": ".1"}, {"w3": ".8"}], 
                "tickers": [{"t1": "AAA"}, {"t2": "AAA"}, {"t3": "AAA"}]};
     var datum = {"weights": [$("input[name='w1']").val(), 
                              $("input[name='w2']").val(), 
@@ -133,15 +116,13 @@ function clickCalculate(elmnt) {
               contentType: "application/json; charset=utf-8",
               dataType: "json",
               success: function(data){
-                //$(this).next("img").attr("src", "data:image/png;base64," + "b'" + data['b64encoded']);
-
                 $("img").attr("src", "data:image/png;base64," + data['b64encoded']);
               },
               failure: function(errMsg) {
                     alert(errMsg);
             }
           });
-}*/
+}
 
 var calc;
 calc = document.getElementsByClassName("calculate")[0];
