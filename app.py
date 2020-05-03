@@ -13,6 +13,7 @@ from config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
+plt.switch_backend('Agg')
 
 def portfolio(tickers,weights,backtest_window="2019-09-04",benchmark="SPY"):
     if weights.sum()!=1:
